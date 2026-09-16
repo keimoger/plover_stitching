@@ -56,6 +56,48 @@ Examples
 
   - I'm feeling fabulous{:stitch_last_word:1:✨} → I'm feeling f✨a✨b✨u✨l✨o✨u✨s
 
+Alternating Case
+-----------------
+
+``{:altcase:letter:invert?}``
+
+-  **letter**: the letter to add, alternating case each stroke
+-  **invert** *(optional)*: a non-empty value starts a fresh run uppercase instead of lowercase
+
+Examples
+^^^^^^^^
+
+- Alternating-case fingerspelling
+
+  - {:altcase:s}{:altcase:o}{:altcase:m}{:altcase:e} → sOmE
+
+- Inverted (uppercase-start) alternating-case fingerspelling
+
+  - {:altcase:s:1}{:altcase:o:1}{:altcase:m:1}{:altcase:e:1} → SoMe
+
+Alternating-Case Last Words
+----------------------------
+
+``{:altcase_last_word:count?:invert?}``
+
+- **count** *(optional)*: number of previous words to re-case, *defaults to 1*
+- **invert** *(optional)*: a non-empty value starts each word uppercase instead of lowercase
+
+Examples
+^^^^^^^^
+
+- Re-case last word
+
+  - something{:altcase_last_word} → sOmEtHiNg
+
+- Re-case last 2 words
+
+  - hello world{:altcase_last_word:2} → hElLo wOrLd
+
+- Re-case last word, inverted (uppercase-start)
+
+  - something{:altcase_last_word::1} → SoMeThInG
+
 Fingerspelling Alphabet
 =======================
 

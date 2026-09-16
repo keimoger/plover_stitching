@@ -41,3 +41,57 @@ class TestsBlackbox(BlackboxTester):
         *             ' A'
         PW/KW-BG/A/KR ' A-B, A-C'
         '''
+
+    def test_altcase_last_word(self):
+        r'''
+        "TEFT": "test",
+        "S": "{:altcase_last_word}",
+
+        TEFT/S  " tEsT"
+        '''
+
+    def test_altcase_last_word_multiple(self):
+        r'''
+        "TEFT": "test",
+        "KW-BG": "{,}",
+        "PHE": "me",
+        "S": "{:altcase_last_word:3}",
+
+        TEFT/KW-BG/PHE/S  " tEsT, mE"
+        '''
+
+    def test_altcase_fingerspelling(self):
+        r'''
+        "A": "{:altcase:a}",
+        "PW": "{:altcase:b}",
+        "KR": "{:altcase:c}",
+        "KW-BG": "{,}",
+
+        A             ' a'
+        PW/KR         ' aBc'
+        *             ' aB'
+        *             ' a'
+        PW/KW-BG/A/KR ' aB, aC'
+        '''
+
+    def test_altcase_last_word_invert(self):
+        r'''
+        "TEFT": "test",
+        "S": "{:altcase_last_word::1}",
+
+        TEFT/S  " TeSt"
+        '''
+
+    def test_altcase_fingerspelling_invert(self):
+        r'''
+        "A": "{:altcase:a:1}",
+        "PW": "{:altcase:b:1}",
+        "KR": "{:altcase:c:1}",
+        "KW-BG": "{,}",
+
+        A             ' A'
+        PW/KR         ' AbC'
+        *             ' Ab'
+        *             ' A'
+        PW/KW-BG/A/KR ' Ab, Ac'
+        '''
